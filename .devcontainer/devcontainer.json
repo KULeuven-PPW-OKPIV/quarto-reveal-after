@@ -1,0 +1,31 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "quarto.quarto",
+                "ms-azuretools.vscode-docker",
+                "redhat.vscode-yaml",
+                "James-Yu.latex-workshop",
+                "sumneko.lua"
+            ]
+        }
+    },
+    "postAttachCommand": {
+		"rstudio-start": "rserver"
+	},    
+    "forwardPorts": [8787],
+    "portsAttributes": {
+        "8787": {
+            "label": "Rstudio",
+            "requireLocalPort": true,
+            "onAutoForward": "ignore"
+        }
+    },
+    "containerEnv": {
+        "GITHUB_PAT": "${localEnv:GITHUB_PAT}"
+    },
+    "remoteUser": "root"
+}
